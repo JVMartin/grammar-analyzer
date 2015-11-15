@@ -1,8 +1,6 @@
 # Jacob Martin
 # CS 311
 
-import helpers
-
 class GrammarAnalyzer:
 
 	def __init__(self, grammar):
