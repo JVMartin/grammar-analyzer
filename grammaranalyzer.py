@@ -39,11 +39,15 @@ class GrammarAnalyzer:
 		if stack_symbol == "$":
 			return True if not self.input else False
 
+		# If the input is empty, reject.
+		if not self.input:
+			return False
+
 		# Peek at the next input symbol.
 		input_symbol = self.input[-1]
 
 		# If we have a variable...
-		if stack_symbol.isupper():
+		if stack_symbol.isalpha() and stack_symbol.isupper():
 			# Grab the next rule to apply.
 			rule = self.grammar.get_rule(stack_symbol, input_symbol)
 
@@ -58,12 +62,13 @@ class GrammarAnalyzer:
 
 		# If we have a terminal and it matches the next input symbol...
 		elif stack_symbol == input_symbol:
+			# Turn the peek into a pop.
 			self.input.pop()
 
 		else:
 			return False
 
-		self.parse_input()
+		return self.parse_input()
 
 	def stack_to_string(self):
 		return ''.join(reversed(self.stack))

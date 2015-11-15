@@ -22,7 +22,10 @@ class TestGrammar(unittest.TestCase):
 
 		# Check start variable productions
 		rules = grammar.produces("S")
-		self.assertEquals(rules, ["aSb", "#"])
+		self.assertEquals(rules, ["aAb"])
+
+		rules = grammar.produces("A")
+		self.assertEquals(rules, ["aAb", "#"])
 
 		# Check nonexistant variable productions
 		rules = grammar.produces("N")
@@ -33,9 +36,9 @@ class TestGrammar(unittest.TestCase):
 
 		# Check that the correct rule is returned
 		rule = grammar.get_rule("S", "a")
-		self.assertEquals(rule, "aSb")
+		self.assertEquals(rule, "aAb")
 
-		rule = grammar.get_rule("S", "#")
+		rule = grammar.get_rule("A", "#")
 		self.assertEquals(rule, "#")
 
 		# Check nonexistant input symbol
@@ -53,4 +56,19 @@ class TestGrammarChecker(unittest.TestCase):
 		grammar = Grammar("grammars/grammar1.json")
 		grammar_checker = GrammarAnalyzer(grammar)
 
-		grammar_checker.test_string("a#b")
+		############################
+		#       True Strings       #
+		############################
+		self.assertTrue(grammar_checker.test_string("a#b"))
+		self.assertTrue(grammar_checker.test_string("aa#bb"))
+		self.assertTrue(grammar_checker.test_string("aaa#bbb"))
+		self.assertTrue(grammar_checker.test_string("aaaa#bbbb"))
+		self.assertTrue(grammar_checker.test_string("aaaaa#bbbbb"))
+
+		############################
+		#      False Strings       #
+		############################
+		self.assertFalse(grammar_checker.test_string("a"))
+		self.assertFalse(grammar_checker.test_string("b"))
+		self.assertFalse(grammar_checker.test_string("#"))
+		self.assertFalse(grammar_checker.test_string("owijeroij"))
