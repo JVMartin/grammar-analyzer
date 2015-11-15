@@ -36,3 +36,5 @@ class Grammar:
 		for production in productions:
 			if production[0] == input_symbol:
 				return production
+
+		return False
