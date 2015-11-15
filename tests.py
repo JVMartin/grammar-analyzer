@@ -25,13 +25,23 @@ class TestGrammar(unittest.TestCase):
 		self.assertEquals(rules, ["aSb", "#"])
 
 		# Check nonexistant variable productions
-		self.assertFalse(grammar.produces("N"))
+		rules = grammar.produces("N")
+		self.assertFalse(rules)
 
 	def test_grammar1_rules(self):
 		grammar = Grammar("grammars/grammar1.json")
 
+		# Check that the correct rule is returned
 		rule = grammar.get_rule("S", "a")
 		self.assertEquals(rule, "aSb")
+
+		# Check nonexistant variable
+		rule = grammar.get_rule("S", "k")
+		self.assertFalse(rule)
+
+		# Check nonexistant input symbol
+		rule = grammar.get_rule("N", "f")
+		self.assertFalse(rule)
 
 
 class TestGrammarChecker(unittest.TestCase):
@@ -39,3 +49,4 @@ class TestGrammarChecker(unittest.TestCase):
 	def test_grammar1(self):
 		grammar = Grammar("grammars/grammar1.json")
 		grammar_checker = GrammarChecker(grammar)
+		grammar_checker.heyo()
