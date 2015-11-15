@@ -57,7 +57,7 @@ class TestGrammarChecker(unittest.TestCase):
 		grammar_checker = GrammarAnalyzer(grammar)
 
 		############################
-		#       True Strings       #
+		#     Accepted Strings     #
 		############################
 		self.assertTrue(grammar_checker.test_string("a#b"))
 		self.assertTrue(grammar_checker.test_string("aa#bb"))
@@ -66,9 +66,10 @@ class TestGrammarChecker(unittest.TestCase):
 		self.assertTrue(grammar_checker.test_string("aaaaa#bbbbb"))
 
 		############################
-		#      False Strings       #
+		#     Rejected Strings     #
 		############################
 		self.assertFalse(grammar_checker.test_string("a"))
-		self.assertFalse(grammar_checker.test_string("b"))
+		self.assertFalse(grammar_checker.test_string("aa#b"))
+		self.assertFalse(grammar_checker.test_string("a#bb"))
 		self.assertFalse(grammar_checker.test_string("#"))
-		self.assertFalse(grammar_checker.test_string("owijeroij"))
+		self.assertFalse(grammar_checker.test_string("asdf"))
