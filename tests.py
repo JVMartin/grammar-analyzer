@@ -7,9 +7,9 @@ from grammaranalyzer import GrammarAnalyzer
 
 class TestGrammar(unittest.TestCase):
 
-	def test_nonexistant_file(self):
+	def test_nonexistent_file(self):
 		# Ensure no exceptions are thrown.
-		grammar = Grammar("nonexistant.json")
+		grammar = Grammar("nonexistent.json")
 
 		self.assertEquals(grammar.get_desc(), "")
 
@@ -28,7 +28,7 @@ class TestGrammar(unittest.TestCase):
 		rules = grammar.produces("A")
 		self.assertEquals(rules, ["aAb", "#"])
 
-		# Check nonexistant variable productions.
+		# Check nonexistent variable productions.
 		rules = grammar.produces("N")
 		self.assertFalse(rules)
 
@@ -42,11 +42,11 @@ class TestGrammar(unittest.TestCase):
 		rule = grammar.get_rule("A", "#")
 		self.assertEquals(rule, "#")
 
-		# Check nonexistant input symbol.
+		# Check nonexistent input symbol.
 		rule = grammar.get_rule("S", "k")
 		self.assertFalse(rule)
 
-		# Check nonexistant variable.
+		# Check nonexistent variable.
 		rule = grammar.get_rule("N", "a")
 		self.assertFalse(rule)
 
