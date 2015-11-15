@@ -3,7 +3,7 @@
 
 import unittest
 from grammar import Grammar
-from grammarchecker import GrammarChecker
+from grammaranalyzer import GrammarAnalyzer
 
 class TestGrammar(unittest.TestCase):
 
@@ -35,12 +35,15 @@ class TestGrammar(unittest.TestCase):
 		rule = grammar.get_rule("S", "a")
 		self.assertEquals(rule, "aSb")
 
-		# Check nonexistant variable
+		rule = grammar.get_rule("S", "#")
+		self.assertEquals(rule, "#")
+
+		# Check nonexistant input symbol
 		rule = grammar.get_rule("S", "k")
 		self.assertFalse(rule)
 
-		# Check nonexistant input symbol
-		rule = grammar.get_rule("N", "f")
+		# Check nonexistant variable
+		rule = grammar.get_rule("N", "a")
 		self.assertFalse(rule)
 
 
@@ -48,5 +51,6 @@ class TestGrammarChecker(unittest.TestCase):
 
 	def test_grammar1(self):
 		grammar = Grammar("grammars/grammar1.json")
-		grammar_checker = GrammarChecker(grammar)
-		grammar_checker.heyo()
+		grammar_checker = GrammarAnalyzer(grammar)
+
+		grammar_checker.test_string("a#b")
