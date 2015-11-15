@@ -10,8 +10,8 @@ class GrammarAnalyzer:
 		self.stack   = []
 		self.input   = []
 		print("Grammar analyzer initialized.")
-		helpers.hr()
 		print("Imported grammar: " + grammar.get_desc())
+		helpers.hr()
 
 	def test_string(self, string):
 		if not len(string):
@@ -28,20 +28,42 @@ class GrammarAnalyzer:
 
 	def parse_input(self):
 		helpers.hr()
-		stack_symbol = self.stack.pop()
+		print("Input stack: " + self.input_to_string())
+		print("Stack: " + self.stack_to_string())
 
-		print("Popped stack symbol: " + stack_symbol)
+		# Pop the next symbol off the stack.
+		stack_symbol = self.stack.pop()
 
 		# If the stack is empty and the input is too, accept.
 		# Otherwise, reject.
 		if stack_symbol == "$":
 			return True if not self.input else False
 
+		# Peek at the next input symbol.
+		input_symbol = self.input[-1]
+
 		# If we have a variable...
 		if stack_symbol.isupper():
-			# Peek at the next input symbol.
-			next_input = self.input[-1]
-			print(next_input)
+			# Grab the next rule to apply.
+			rule = self.grammar.get_rule(stack_symbol, input_symbol)
+
+			if not rule:
+				print("There was no rule to push.")
+				return False
+
+			# Push the rule onto the stack.
+			symbols = list(rule)
+			for symbol in reversed(symbols):
+				self.stack.append(symbol)
+
+		# If we have a terminal and it matches the next input symbol...
+		elif stack_symbol == input_symbol:
+			self.input.pop()
+
+		else:
+			return False
+
+		self.parse_input()
 
 	def stack_to_string(self):
 		return ''.join(reversed(self.stack))
