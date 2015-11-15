@@ -6,12 +6,14 @@ import helpers
 class GrammarAnalyzer:
 
 	def __init__(self, grammar):
+		self.verbose = False
 		self.grammar = grammar
 		self.stack   = []
 		self.input   = []
-		print("Grammar analyzer initialized.")
-		print("Imported grammar: " + grammar.get_desc())
-		helpers.hr()
+
+		self.verbalize("Grammar analyzer initialized.")
+		self.verbalize("Imported grammar: " + grammar.get_desc())
+		self.verbalize(self.hr())
 
 	def test_string(self, string):
 		if not len(string):
@@ -21,15 +23,15 @@ class GrammarAnalyzer:
 		self.input = list(string)
 		self.input.reverse()
 
-		print("Testing string: " + string)
-		print("Starting stack: " + self.stack_to_string())
+		self.verbalize("Testing string: " + string)
+		self.verbalize("Starting stack: " + self.stack_to_string())
 
 		return self.parse_input()
 
 	def parse_input(self):
-		helpers.hr()
-		print("Input stack: " + self.input_to_string())
-		print("Stack: " + self.stack_to_string())
+		self.verbalize(self.hr())
+		self.verbalize("Input stack: " + self.input_to_string())
+		self.verbalize("Stack: " + self.stack_to_string())
 
 		# Pop the next symbol off the stack.
 		stack_symbol = self.stack.pop()
@@ -52,7 +54,7 @@ class GrammarAnalyzer:
 			rule = self.grammar.get_rule(stack_symbol, input_symbol)
 
 			if not rule:
-				print("There was no rule to push.")
+				self.verbalize("There was no rule to push.")
 				return False
 
 			# Push the rule onto the stack.
@@ -74,10 +76,17 @@ class GrammarAnalyzer:
 		return ''.join(reversed(self.stack))
 
 	def print_stack(self):
-		print(self.stack_to_string())
+		self.verbalize(self.stack_to_string())
 
 	def input_to_string(self):
 		return ''.join(reversed(self.input))
 
 	def print_input(self):
-		print(self.input_to_string())
+		self.verbalize(self.input_to_string())
+
+	def verbalize(self, output):
+		if self.verbose:
+			print(output)
+
+	def hr(self):
+		return "--------------------------------------------------"
