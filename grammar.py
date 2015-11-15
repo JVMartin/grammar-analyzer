@@ -11,7 +11,7 @@ class Grammar:
 		try:
 			grammar   = json.load(open(source))
 			self.desc = grammar["desc"]
-			for variable, rule in grammar["rules"].iteritems():
+			for variable, rule in grammar["rules"].items():
 				self.rules[variable].append(rule)
 		except FileNotFoundError:
 			pass
