@@ -73,14 +73,8 @@ class GrammarAnalyzer:
 	def stack_to_string(self):
 		return ''.join(reversed(self.stack))
 
-	def print_stack(self):
-		self.verbalize(self.stack_to_string())
-
 	def input_to_string(self):
 		return ''.join(reversed(self.input))
-
-	def print_input(self):
-		self.verbalize(self.input_to_string())
 
 	def verbalize(self, output):
 		if self.verbose:
