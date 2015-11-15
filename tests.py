@@ -12,7 +12,11 @@ class TestGrammar(unittest.TestCase):
 
 	def test_grammar1(self):
 		grammar = Grammar("grammars/grammar1.json")
+
 		self.assertEquals(grammar.get_desc(), "{a^n # b^n | n > 0}")
+
+		rules = grammar.yields("S")
+		self.assertEquals(rules, ["aSb", "#"])
 
 
 class TestGrammarChecker(unittest.TestCase):

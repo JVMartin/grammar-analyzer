@@ -11,15 +11,15 @@ class Grammar:
 		try:
 			grammar   = json.load(open(source))
 			self.desc = grammar["desc"]
-			for variable, rule in grammar["rules"].items():
-				if variable not in self.rules:
-					self.rules[variable] = []
-				self.rules[variable].append(rule)
+			for variable, rules in grammar["rules"].items():
+				self.rules[variable] = rules
 		except FileNotFoundError:
 			pass
 
 	def get_desc(self):
 		return self.desc
 
-	def get_rules(self):
-		return
+	def yields(self, variable):
+		if variable not in self.rules:
+			return False
+		return self.rules[variable]
