@@ -7,12 +7,12 @@ from grammarchecker import GrammarChecker
 
 class TestGrammar(unittest.TestCase):
 
-	def testNonexistantFile(self):
+	def test_nonexistant_file(self):
 		grammar = Grammar("nonexistant.json")
 
-	def testGrammar1(self):
+	def test_grammar1(self):
 		grammar = Grammar("grammars/grammar1.json")
-		self.assertEquals(grammar.getDesc(), "{a^n # b^n | n > 0}")
+		self.assertEquals(grammar.get_desc(), "{a^n # b^n | n > 0}")
 
 
 class TestGrammarChecker(unittest.TestCase):
