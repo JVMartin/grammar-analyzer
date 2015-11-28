@@ -1,6 +1,13 @@
 # Jacob Martin
 # CS 311
 
+# A class used to test strings against a given grammar to see if the grammar
+# can generate the string.
+
+# An instance of GrammarAnalyzer is initialized with a passed Grammar object
+# and is capable of testing that grammar against test strings (input strings)
+# using the test_string method.
+
 class GrammarAnalyzer:
 
 	def __init__(self, grammar):
@@ -14,6 +21,12 @@ class GrammarAnalyzer:
 		self.verbalize(self.hr())
 
 	def test_string(self, string):
+		"""
+		Takes a given string and tests if the grammar can generate it.
+
+		:param string: The string to test.
+		:return bool: True if the grammar can generate it; false otherwise.
+		"""
 		if not len(string):
 			return False
 
@@ -27,6 +40,12 @@ class GrammarAnalyzer:
 		return self.parse_input()
 
 	def parse_input(self):
+		"""
+		Use the grammar ruleset to parse the string and determine language
+		membership.
+
+		:return: True if the grammar can generate it; false otherwise.
+		"""
 		self.verbalize(self.hr())
 		self.verbalize("Input stack: " + self.input_to_string())
 		self.verbalize("Stack: " + self.stack_to_string())

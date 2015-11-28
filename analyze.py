@@ -2,8 +2,8 @@
 # Jacob Martin
 # CS 311
 
-# Use the grammar analyzer to load the grammar of your choice and
-# test the input string of your choice.
+# Use the grammar analyzer to load the grammar of your choice and an input
+# string of your choice, then see if the grammar can generate the string.
 
 # usage:
 #        python3 analyze.py <path to grammar json> <input string>
