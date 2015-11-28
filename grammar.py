@@ -9,7 +9,8 @@ class Grammar:
 		self.desc  = ""
 		self.rules = dict()
 		try:
-			grammar   = json.load(open(source))
+			with open(source) as json_file:
+				grammar = json.load(json_file)
 			self.desc = grammar["desc"]
 			for variable, rules in grammar["rules"].items():
 				self.rules[variable] = rules
