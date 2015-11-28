@@ -142,3 +142,33 @@ class TestGrammarAnalyzer(unittest.TestCase):
 		self.assertFalse(grammar_analyzer.test_string("aaaaa##ccccc#"))
 		self.assertFalse(grammar_analyzer.test_string("aaaa##ccccc#"))
 		self.assertFalse(grammar_analyzer.test_string("aaa##ccccc#"))
+
+	def test_grammar4(self):
+		grammar          = Grammar("grammars/grammar4.json")
+		grammar_analyzer = GrammarAnalyzer(grammar)
+
+		# Check accepted strings.
+		self.assertTrue(grammar_analyzer.test_string("##"))
+		self.assertTrue(grammar_analyzer.test_string("#a#"))
+		self.assertTrue(grammar_analyzer.test_string("#aa#"))
+		self.assertTrue(grammar_analyzer.test_string("#aaa#"))
+		self.assertTrue(grammar_analyzer.test_string("#aaaa#"))
+		self.assertTrue(grammar_analyzer.test_string("#aaaaa#"))
+		self.assertTrue(grammar_analyzer.test_string("#aaaaaa#"))
+		self.assertTrue(grammar_analyzer.test_string("#aaaaaaa#"))
+		self.assertTrue(grammar_analyzer.test_string("#aaaaaaaa#"))
+		self.assertTrue(grammar_analyzer.test_string("#aaaaaaaaa#"))
+		self.assertTrue(grammar_analyzer.test_string("#aaaaaaaaaa#"))
+
+		# Check rejected strings.
+		self.assertFalse(grammar_analyzer.test_string("#"))
+		self.assertFalse(grammar_analyzer.test_string("###"))
+		self.assertFalse(grammar_analyzer.test_string("#a"))
+		self.assertFalse(grammar_analyzer.test_string("a#"))
+		self.assertFalse(grammar_analyzer.test_string("aa#"))
+		self.assertFalse(grammar_analyzer.test_string("#aa"))
+		self.assertFalse(grammar_analyzer.test_string("#aaa"))
+		self.assertFalse(grammar_analyzer.test_string("#aaaa"))
+		self.assertFalse(grammar_analyzer.test_string("aaaaa#"))
+		self.assertFalse(grammar_analyzer.test_string("aaaaaa#"))
+		self.assertFalse(grammar_analyzer.test_string("aaaaaaa#"))

@@ -34,6 +34,6 @@ grammar          = Grammar(path_to_grammar)
 grammar_analyzer = GrammarAnalyzer(grammar)
 
 if grammar_analyzer.test_string(input_string):
-	print(grammar.get_desc() + ' ACCEPTS "' + input_string + '"')
+	print(grammar.get_desc() + ' CONTAINS "' + input_string + '"')
 else:
-	print(grammar.get_desc() + ' REJECTS "' + input_string + '"')
+	print(grammar.get_desc() + ' DOES NOT CONTAIN "' + input_string + '"')
