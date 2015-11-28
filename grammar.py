@@ -42,7 +42,8 @@ class Grammar:
 	def get_rule(self, variable, input_symbol):
 		"""
 		Retrieve the single production (rule) that the passed variable
-		can produce whose leftmost symbol is the passed input symbol.
+		can produce whose leftmost symbol is the passed input (terminal)
+		symbol.
 
 		:param variable: The variable in question.
 		:param input_symbol: The input symbol in question.
