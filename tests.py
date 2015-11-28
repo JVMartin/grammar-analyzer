@@ -2,7 +2,9 @@
 # Jacob Martin
 # CS 311
 
-# Unit tests for the analyzer and for each grammar constructed.
+# Unit tests for the Grammar class and for the GrammarAnalyzer class.
+# Tests each grammar in the "grammars" folder against a variety of strings.
+
 # Run unit tests with:
 # python3 -m unittest tests.py
 
@@ -68,13 +70,19 @@ class TestGrammarAnalyzer(unittest.TestCase):
 		self.assertTrue(grammar_analyzer.test_string("aaa#bbb"))
 		self.assertTrue(grammar_analyzer.test_string("aaaa#bbbb"))
 		self.assertTrue(grammar_analyzer.test_string("aaaaa#bbbbb"))
+		self.assertTrue(grammar_analyzer.test_string("aaaaaa#bbbbbb"))
+		self.assertTrue(grammar_analyzer.test_string("aaaaaaa#bbbbbbb"))
+		self.assertTrue(grammar_analyzer.test_string("aaaaaaaa#bbbbbbbb"))
 
 		# Check rejected strings.
+		self.assertFalse(grammar_analyzer.test_string(""))
+		self.assertFalse(grammar_analyzer.test_string("#"))
 		self.assertFalse(grammar_analyzer.test_string("a"))
 		self.assertFalse(grammar_analyzer.test_string("aa#b"))
 		self.assertFalse(grammar_analyzer.test_string("a#bb"))
-		self.assertFalse(grammar_analyzer.test_string("#"))
 		self.assertFalse(grammar_analyzer.test_string("asdf"))
+		self.assertFalse(grammar_analyzer.test_string("aaaa#bbbbbb"))
+		self.assertFalse(grammar_analyzer.test_string("00000"))
 
 	def test_grammar2(self):
 		grammar          = Grammar("grammars/grammar2.json")
@@ -88,11 +96,49 @@ class TestGrammarAnalyzer(unittest.TestCase):
 		self.assertTrue(grammar_analyzer.test_string("10#01"))
 		self.assertTrue(grammar_analyzer.test_string("010#010"))
 		self.assertTrue(grammar_analyzer.test_string("1111#1111"))
+		self.assertTrue(grammar_analyzer.test_string("010001#100010"))
 
 		# Check rejected strings.
+		self.assertFalse(grammar_analyzer.test_string(""))
 		self.assertFalse(grammar_analyzer.test_string("0"))
 		self.assertFalse(grammar_analyzer.test_string("0#1"))
 		self.assertFalse(grammar_analyzer.test_string("1#10"))
 		self.assertFalse(grammar_analyzer.test_string("01#01"))
 		self.assertFalse(grammar_analyzer.test_string("11#111"))
 		self.assertFalse(grammar_analyzer.test_string("111#11"))
+		self.assertFalse(grammar_analyzer.test_string("111#110"))
+		self.assertFalse(grammar_analyzer.test_string("0111#110"))
+
+	def test_grammar3(self):
+		grammar          = Grammar("grammars/grammar3.json")
+		grammar_analyzer = GrammarAnalyzer(grammar)
+
+		# Check accepted strings.
+		self.assertTrue(grammar_analyzer.test_string("a#b#c#"))
+		self.assertTrue(grammar_analyzer.test_string("a#b#cc#"))
+		self.assertTrue(grammar_analyzer.test_string("a#b#ccc#"))
+		self.assertTrue(grammar_analyzer.test_string("a#b#cccc#"))
+		self.assertTrue(grammar_analyzer.test_string("a#b#ccccc#"))
+		self.assertTrue(grammar_analyzer.test_string("aa#bb#c#"))
+		self.assertTrue(grammar_analyzer.test_string("aa#bb#cc#"))
+		self.assertTrue(grammar_analyzer.test_string("aa#bb#ccc#"))
+		self.assertTrue(grammar_analyzer.test_string("aa#bb#cccc#"))
+		self.assertTrue(grammar_analyzer.test_string("aa#bb#ccccc#"))
+		self.assertTrue(grammar_analyzer.test_string("aaaa#bbbb#c#"))
+		self.assertTrue(grammar_analyzer.test_string("aaaaa#bbbbb#c#"))
+		self.assertTrue(grammar_analyzer.test_string("aaaaa#bbbbb#cc#"))
+		self.assertTrue(grammar_analyzer.test_string("aaaaa#bbbbb#ccc#"))
+		self.assertTrue(grammar_analyzer.test_string("aaaaa#bbbbb#cccc#"))
+		self.assertTrue(grammar_analyzer.test_string("aaaaa#bbbbb#ccccc#"))
+
+		# Check rejected strings.
+		self.assertFalse(grammar_analyzer.test_string(""))
+		self.assertFalse(grammar_analyzer.test_string("a"))
+		self.assertFalse(grammar_analyzer.test_string("a#b"))
+		self.assertFalse(grammar_analyzer.test_string("a#b#c"))
+		self.assertFalse(grammar_analyzer.test_string("####"))
+		self.assertFalse(grammar_analyzer.test_string("abcd"))
+		self.assertFalse(grammar_analyzer.test_string("aaaaa#bbb#c#"))
+		self.assertFalse(grammar_analyzer.test_string("aaaaa##ccccc#"))
+		self.assertFalse(grammar_analyzer.test_string("aaaa##ccccc#"))
+		self.assertFalse(grammar_analyzer.test_string("aaa##ccccc#"))
