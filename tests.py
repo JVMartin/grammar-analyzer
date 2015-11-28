@@ -11,22 +11,22 @@ class TestGrammar(unittest.TestCase):
 		# Ensure no exceptions are thrown.
 		grammar = Grammar("nonexistent.json")
 
-		self.assertEquals(grammar.get_desc(), "")
+		self.assertEqual(grammar.get_desc(), "")
 
 	def test_grammar1(self):
 		grammar = Grammar("grammars/grammar1.json")
 
-		self.assertEquals(grammar.get_desc(), "{a^n # b^n | n > 0}")
+		self.assertEqual(grammar.get_desc(), "{a^n # b^n | n > 0}")
 
 	def test_grammar1_productions(self):
 		grammar = Grammar("grammars/grammar1.json")
 
 		# Check start variable productions.
 		rules = grammar.produces("S")
-		self.assertEquals(rules, ["aAb"])
+		self.assertEqual(rules, ["aAb"])
 
 		rules = grammar.produces("A")
-		self.assertEquals(rules, ["aAb", "#"])
+		self.assertEqual(rules, ["aAb", "#"])
 
 		# Check nonexistent variable productions.
 		rules = grammar.produces("N")
@@ -37,10 +37,10 @@ class TestGrammar(unittest.TestCase):
 
 		# Check that the correct rules are returned.
 		rule = grammar.get_rule("S", "a")
-		self.assertEquals(rule, "aAb")
+		self.assertEqual(rule, "aAb")
 
 		rule = grammar.get_rule("A", "#")
-		self.assertEquals(rule, "#")
+		self.assertEqual(rule, "#")
 
 		# Check nonexistent input symbol.
 		rule = grammar.get_rule("S", "k")
