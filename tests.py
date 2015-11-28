@@ -73,6 +73,8 @@ class TestGrammarAnalyzer(unittest.TestCase):
 		self.assertTrue(grammar_analyzer.test_string("aaaaaa#bbbbbb"))
 		self.assertTrue(grammar_analyzer.test_string("aaaaaaa#bbbbbbb"))
 		self.assertTrue(grammar_analyzer.test_string("aaaaaaaa#bbbbbbbb"))
+		self.assertTrue(grammar_analyzer.test_string("aaaaaaaaa#bbbbbbbbb"))
+		self.assertTrue(grammar_analyzer.test_string("aaaaaaaaaa#bbbbbbbbbb"))
 
 		# Check rejected strings.
 		self.assertFalse(grammar_analyzer.test_string(""))
@@ -97,6 +99,8 @@ class TestGrammarAnalyzer(unittest.TestCase):
 		self.assertTrue(grammar_analyzer.test_string("010#010"))
 		self.assertTrue(grammar_analyzer.test_string("1111#1111"))
 		self.assertTrue(grammar_analyzer.test_string("010001#100010"))
+		self.assertTrue(grammar_analyzer.test_string("0100011#1100010"))
+		self.assertTrue(grammar_analyzer.test_string("01000101#10100010"))
 
 		# Check rejected strings.
 		self.assertFalse(grammar_analyzer.test_string(""))
