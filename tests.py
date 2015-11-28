@@ -1,5 +1,10 @@
+#!/usr/bin/env python3
 # Jacob Martin
 # CS 311
+
+# Unit tests for the analyzer and for each grammar constructed.
+# Run unit tests with:
+# python3 -m unittest tests.py
 
 import unittest
 from grammar import Grammar
@@ -54,7 +59,7 @@ class TestGrammar(unittest.TestCase):
 class TestGrammarAnalyzer(unittest.TestCase):
 
 	def test_grammar1(self):
-		grammar = Grammar("grammars/grammar1.json")
+		grammar          = Grammar("grammars/grammar1.json")
 		grammar_analyzer = GrammarAnalyzer(grammar)
 
 		# Check accepted strings.
