@@ -12,16 +12,15 @@ import json
 class Grammar:
 
 	def __init__(self, source):
-		self.desc  = ""
-		self.rules = dict()
 		try:
+			self.desc = ""
+			self.rules = dict()
 			with open(source) as json_file:
 				grammar = json.load(json_file)
-			self.desc = grammar["desc"]
-			for variable, rules in grammar["rules"].items():
-				self.rules[variable] = rules
+			self.desc  = grammar["desc"]
+			self.rules = grammar["rules"]
 		except FileNotFoundError:
-			pass
+			print("The grammar file does not exist.")
 
 	def get_desc(self):
 		return self.desc
