@@ -1,5 +1,5 @@
 {
-	"desc": "{a^i # b^i # c^k | i = j and i,j,k > 0}",
+	"desc": "{a^i # b^j # c^k # | i = j and i,j,k > 0}",
 	"rules": {
 		"S": [
 			"aAb#cC"
