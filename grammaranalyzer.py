@@ -92,10 +92,10 @@ class GrammarAnalyzer:
 		return self.parse_input()
 
 	def stack_to_string(self):
-		return ''.join(reversed(self.stack))
+		return "".join(reversed(self.stack))
 
 	def input_to_string(self):
-		return ''.join(reversed(self.input))
+		return "".join(reversed(self.input))
 
 	def verbalize(self, output):
 		if self.verbose:

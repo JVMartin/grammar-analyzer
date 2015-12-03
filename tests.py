@@ -80,6 +80,7 @@ class TestGrammarAnalyzer(unittest.TestCase):
 		self.assertTrue(grammar_analyzer.test_string("aaaaaaaaaa#bbbbbbbbbb"))
 
 		# Check rejected strings.
+		self.assertFalse(grammar_analyzer.test_string("xxx"))
 		self.assertFalse(grammar_analyzer.test_string(""))
 		self.assertFalse(grammar_analyzer.test_string("#"))
 		self.assertFalse(grammar_analyzer.test_string("a"))
@@ -87,7 +88,6 @@ class TestGrammarAnalyzer(unittest.TestCase):
 		self.assertFalse(grammar_analyzer.test_string("a#bb"))
 		self.assertFalse(grammar_analyzer.test_string("asdf"))
 		self.assertFalse(grammar_analyzer.test_string("aaaa#bbbbbb"))
-		self.assertFalse(grammar_analyzer.test_string("00000"))
 
 	def test_grammar2(self):
 		grammar          = Grammar("grammars/grammar2.json")
@@ -106,6 +106,7 @@ class TestGrammarAnalyzer(unittest.TestCase):
 		self.assertTrue(grammar_analyzer.test_string("01000101#10100010"))
 
 		# Check rejected strings.
+		self.assertFalse(grammar_analyzer.test_string("xxx"))
 		self.assertFalse(grammar_analyzer.test_string(""))
 		self.assertFalse(grammar_analyzer.test_string("0"))
 		self.assertFalse(grammar_analyzer.test_string("0#1"))
@@ -139,6 +140,7 @@ class TestGrammarAnalyzer(unittest.TestCase):
 		self.assertTrue(grammar_analyzer.test_string("aaaaa#bbbbb#ccccc#"))
 
 		# Check rejected strings.
+		self.assertFalse(grammar_analyzer.test_string("xxx"))
 		self.assertFalse(grammar_analyzer.test_string(""))
 		self.assertFalse(grammar_analyzer.test_string("a"))
 		self.assertFalse(grammar_analyzer.test_string("a#b"))
@@ -168,6 +170,7 @@ class TestGrammarAnalyzer(unittest.TestCase):
 		self.assertTrue(grammar_analyzer.test_string("#aaaaaaaaaa#"))
 
 		# Check rejected strings.
+		self.assertFalse(grammar_analyzer.test_string("xxx"))
 		self.assertFalse(grammar_analyzer.test_string("#"))
 		self.assertFalse(grammar_analyzer.test_string("###"))
 		self.assertFalse(grammar_analyzer.test_string("#a"))
