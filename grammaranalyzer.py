@@ -1,12 +1,14 @@
-# Jacob Martin
-# CS 311
+"""
+Jacob Martin
+CS 311
 
-# A class used to test strings against a given grammar to see if the grammar
-# can generate the string.
+A class used to test strings against a given grammar to see if the grammar
+can generate the string.
 
-# An instance of GrammarAnalyzer is initialized with a passed Grammar object
-# and is capable of testing that grammar against test strings (input strings)
-# using the test_string method.
+An instance of GrammarAnalyzer is initialized with a passed Grammar object
+and is capable of testing that grammar against test strings (input strings)
+using the test_string method.
+"""
 
 class GrammarAnalyzer:
 

@@ -1,11 +1,13 @@
-# Jacob Martin
-# CS 311
+"""
+Jacob Martin
+CS 311
 
-# A class used as a data structure to represent a grammar.
+A class used as a data structure to represent a grammar.
 
-# An instance of the Grammar class is initialized with the source path to
-# a grammar JSON file.  The JSON file is parsed into the grammar object's
-# members.
+An instance of the Grammar class is initialized with the source path to
+a grammar JSON file.  The JSON file is parsed into the grammar object's
+members.
+"""
 
 import json
 
