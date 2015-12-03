@@ -1,11 +1,15 @@
 {
-	"desc": "{# a^n # | n >= 0}",
+	"desc": "{a^i # b^j # c^k # d^l | i = j and k = l and i,j,k,l > 0}",
 	"rules": {
 		"S": [
-			"#A"
+			"aAb#cCd"
 		],
 		"A": [
-			"aA",
+			"aAb",
+			"#"
+		],
+		"C": [
+			"cCd",
 			"#"
 		]
 	}
