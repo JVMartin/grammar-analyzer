@@ -23,12 +23,12 @@ class TestGrammar(unittest.TestCase):
 
 		self.assertEqual(grammar.get_desc(), "")
 
-	def test_grammar1(self):
+	def test_grammar_load(self):
 		grammar = Grammar("grammars/grammar1.json")
 
 		self.assertEqual(grammar.get_desc(), "{a^n # b^n | n > 0}")
 
-	def test_grammar1_productions(self):
+	def test_grammar_productions(self):
 		grammar = Grammar("grammars/grammar1.json")
 
 		# Check start variable productions.
@@ -42,7 +42,7 @@ class TestGrammar(unittest.TestCase):
 		rules = grammar.produces("N")
 		self.assertFalse(rules)
 
-	def test_grammar1_rules(self):
+	def test_grammar_rules(self):
 		grammar = Grammar("grammars/grammar1.json")
 
 		# Check that the correct rules are returned.
