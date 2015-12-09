@@ -21,10 +21,10 @@ args = sys.argv
 # Helpful usage hints.
 if len(args) != 3:
 	print("usage:")
-	print("\tpython3 analyze.py <path to grammar json> <input string>\n")
+	print("\t./analyze.py <path to grammar json> <input string>\n")
 	print("examples:")
-	print("\tpython3 analyze.py grammars/grammar1.json \"a#b\"")
-	print("\tpython3 analyze.py grammars/grammar1.json \"\"")
+	print("\t./analyze.py grammars/grammar1.json \"a#b\"")
+	print("\t./analyze.py grammars/grammar1.json \"\"")
 	sys.exit()
 
 path_to_grammar = args[1]
