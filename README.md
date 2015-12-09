@@ -5,6 +5,17 @@ Python Grammar Analyzer
 
 A simple grammar analyzer written in Python.
 
+Usage:
+```
+./analyze.py <path to grammar json> <input string>
+```
+
+Examples:
+```
+./analyze.py grammars/grammar1.json "a#b"
+./analyze.py grammars/grammar1.json ""
+```
+
 Grammar Formatting
 ------------------
 1.  All rules in the grammar must have a terminal as the first symbol

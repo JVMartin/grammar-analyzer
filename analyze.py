@@ -5,11 +5,11 @@ Use the grammar analyzer to load the grammar of your choice and an input
 string of your choice, then see if the grammar can generate the string.
 
 usage:
-       python3 analyze.py <path to grammar json> <input string>
+	./analyze.py <path to grammar json> <input string>
 
 examples:
-       python3 analyze.py grammars/grammar1.json "a#b"
-       python3 analyze.py grammars/grammar1.json ""
+	./analyze.py grammars/grammar1.json "a#b"
+	./analyze.py grammars/grammar1.json ""
 """
 
 import sys
