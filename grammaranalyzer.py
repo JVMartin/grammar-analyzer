@@ -1,7 +1,4 @@
 """
-Jacob Martin
-CS 311
-
 A class used to test strings against a given grammar to see if the grammar
 can generate the string.
 

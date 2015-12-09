@@ -1,14 +1,8 @@
 #!/usr/bin/env python3
 
 """
-Jacob Martin
-CS 311
-
 Unit tests for the Grammar class and for the GrammarAnalyzer class.
 Tests each grammar in the "grammars" folder against a variety of strings.
-
-Run unit tests with:
-python3 -m unittest tests.py
 """
 
 import unittest

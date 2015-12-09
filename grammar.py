@@ -1,7 +1,4 @@
 """
-Jacob Martin
-CS 311
-
 A class used as a data structure to represent a grammar.
 
 An instance of the Grammar class is initialized with the source path to
@@ -21,8 +18,8 @@ class Grammar:
 				grammar = json.load(json_file)
 			self.desc  = grammar["desc"]
 			self.rules = grammar["rules"]
-		except FileNotFoundError:
-			print("The grammar file does not exist.")
+		except (OSError, IOError):
+			pass
 
 	def get_desc(self):
 		return self.desc

@@ -1,9 +1,6 @@
 #!/usr/bin/env python3
 
 """
-Jacob Martin
-CS 311
-
 Use the grammar analyzer to load the grammar of your choice and an input
 string of your choice, then see if the grammar can generate the string.
 
